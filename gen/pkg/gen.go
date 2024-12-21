@@ -13,14 +13,14 @@ type pkgModel struct {
 	GoModule string
 }
 
-func Config2PkgModel(goModule string) *pkgModel {
+func Config2PkgModel(config *config.Config) *pkgModel {
 	return &pkgModel{
-		GoModule: goModule,
+		GoModule: config.GoModule,
 	}
 }
 
-func GenPkgFiles() (err error) {
-	confModel := Config2PkgModel(config.GetConfig().GoModule)
+func GenPkgFiles(config *config.Config) (err error) {
+	confModel := Config2PkgModel(config)
 	templateDir := fmt.Sprintf("../templates/%s", pkgDir)
 	err = gen.GenFiles(templateDir, pkgDir, confModel)
 	if err != nil {
