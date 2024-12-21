@@ -1,11 +1,8 @@
 package conf
 
 import (
-	"fmt"
-	"html/template"
-	"os"
-
 	"github.com/Whitea029/easygo/config"
+	"github.com/Whitea029/easygo/gen"
 )
 
 type confGen struct {
@@ -29,31 +26,8 @@ func Config2ConfGen(config *config.Config) *confGen {
 }
 
 func GenConfFiles(config *config.Config) {
-	model := Config2ConfGen(config)
-	tmpl, err := template.ParseFiles("templates/conf/conf.go.tpl")
-	if err != nil {
-		fmt.Println("Error parsing template:", err)
-		return
-	}
-	if _, err := os.Stat("conf"); err != nil {
-		err := os.Mkdir("conf", os.ModePerm)
-		if err != nil {
-			fmt.Println("Error creating directory:", err)
-			return
-		}
-	}
-
-	file, err := os.Create("conf/conf.go")
-	if err != nil {
-		fmt.Println("Error creating file:", err)
-		return
-	}
-	defer file.Close()
-
-	err = tmpl.Execute(file, model)
-	if err != nil {
-		fmt.Println("Error executing template:", err)
-		return
-	}
-
+	confGen := Config2ConfGen(config)
+	templatePath := "../templates/conf/conf.go.tpl"
+	confPath := "conf/conf.go"
+	gen.GenFile(templatePath, confPath, confGen)
 }

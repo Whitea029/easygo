@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/Whitea029/easygo/config"
-	"github.com/Whitea029/easygo/gen/conf"
+	"github.com/Whitea029/easygo/gen/app"
 )
 
 // import "github.com/Whitea029/easygo/cmd"
@@ -12,5 +12,5 @@ import (
 //	}
 
 func main() {
-	conf.GenConfFiles(config.GetConfig())
+	app.GenAppFiles(config.GetConfig())
 }
