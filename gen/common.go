@@ -44,6 +44,30 @@ func createDirIfNotExist(dir string) error {
 	return nil
 }
 
+func GenFiles(templateDir, confDir string, model any) (err error) {
+	err = filepath.Walk(templateDir, func(path string, info os.FileInfo, err error) error {
+		if !info.IsDir() && filepath.Ext(path) == ".tpl" {
+			relPath, err := filepath.Rel(templateDir, path)
+			if err != nil {
+				fmt.Println("Error getting relative path:", err)
+				return err
+			}
+			confPath := filepath.Join(confDir, relPath[:len(relPath)-len(".tpl")])
+			err = GenFile(path, confPath, model)
+			if err != nil {
+				fmt.Println("Error generating file:", err)
+				return err
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		fmt.Println("Error walking template directory:", err)
+		return err
+	}
+	return
+}
+
 func GoModInit(goModule string) error {
 	cmd := exec.Command("go", "mod", "init", goModule)
 	cmd.Stdout = os.Stdout

@@ -7,6 +7,7 @@ import (
 	"github.com/Whitea029/easygo/config"
 	"github.com/Whitea029/easygo/gen"
 	"github.com/Whitea029/easygo/gen/conf"
+	"github.com/Whitea029/easygo/gen/pkg"
 )
 
 func GenAppFiles(config *config.Config) (err error) {
@@ -34,6 +35,7 @@ func GenAppFiles(config *config.Config) (err error) {
 		}
 	}
 	conf.GenConfFiles(config)
+	pkg.GenPkgFiles()
 	gen.GoModTidy()
 	return
 }
