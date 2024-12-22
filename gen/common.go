@@ -44,28 +44,62 @@ func createDirIfNotExist(dir string) error {
 	return nil
 }
 
-func GenFiles(templateDir, confDir string, model any) (err error) {
-	err = filepath.Walk(templateDir, func(path string, info os.FileInfo, err error) error {
-		if !info.IsDir() && filepath.Ext(path) == ".tpl" {
-			relPath, err := filepath.Rel(templateDir, path)
-			if err != nil {
-				fmt.Println("Error getting relative path:", err)
-				return err
+func GenFiles(templateDir, confDir string, model any, deep bool) (err error) {
+	if !deep {
+		entries, err := os.ReadDir(templateDir)
+		if err != nil {
+			fmt.Println("Error reading template directory:", err)
+			return err
+		}
+		for _, entry := range entries {
+			path := filepath.Join(templateDir, entry.Name())
+			if entry.IsDir() && !deep {
+				continue
 			}
-			confPath := filepath.Join(confDir, relPath[:len(relPath)-len(".tpl")])
-			err = GenFile(path, confPath, model)
-			if err != nil {
-				fmt.Println("Error generating file:", err)
-				return err
+
+			if !entry.IsDir() && filepath.Ext(path) == ".tpl" {
+				relPath, err := filepath.Rel(templateDir, path)
+				if err != nil {
+					fmt.Println("Error getting relative path:", err)
+					return err
+				}
+				confPath := filepath.Join(confDir, relPath[:len(relPath)-len(".tpl")])
+				err = GenFile(path, confPath, model)
+				if err != nil {
+					fmt.Println("Error generating file:", err)
+					return err
+				}
 			}
 		}
-		return nil
-	})
-	if err != nil {
-		fmt.Println("Error walking template directory:", err)
-		return err
+	} else {
+		err = filepath.Walk(templateDir, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+
+			if !info.IsDir() && filepath.Ext(path) == ".tpl" {
+				relPath, err := filepath.Rel(templateDir, path)
+				if err != nil {
+					fmt.Println("Error getting relative path:", err)
+					return err
+				}
+				confPath := filepath.Join(confDir, relPath[:len(relPath)-len(".tpl")])
+				err = GenFile(path, confPath, model)
+				if err != nil {
+					fmt.Println("Error generating file:", err)
+					return err
+				}
+			}
+
+			return nil
+		})
+
+		if err != nil {
+			fmt.Println("Error walking template directory:", err)
+			return err
+		}
 	}
-	return
+	return nil
 }
 
 func GoModInit(goModule string) error {

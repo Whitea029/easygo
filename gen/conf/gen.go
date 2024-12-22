@@ -32,7 +32,7 @@ func Config2ConfModel(config *config.Config) *confModel {
 func GenConfFiles(config *config.Config) (err error) {
 	confModel := Config2ConfModel(config)
 	templateDir := fmt.Sprintf("../templates/%s", confDir)
-	err = gen.GenFiles(templateDir, confDir, confModel)
+	err = gen.GenFiles(templateDir, confDir, confModel, true)
 	if err != nil {
 		return fmt.Errorf("Error generating conf files: %v", err)
 	}

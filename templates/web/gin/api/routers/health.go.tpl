@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"{{ .ProjectName }}/api/handlers"
+	"{{ .GoModule }}/api/handlers"
 
 	"github.com/gin-gonic/gin"
 )

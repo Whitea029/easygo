@@ -10,19 +10,19 @@ import (
 var apiDir = "api"
 
 type ginModel struct {
-	ProjectName string
+	GoModule string
 }
 
 func Config2GinModel(config *config.Config) *ginModel {
 	return &ginModel{
-		ProjectName: config.ProjectName,
+		GoModule: config.GoModule,
 	}
 }
 
 func GenGinFiles(config *config.Config) (err error) {
 	ginModel := Config2GinModel(config)
 	templateDir := fmt.Sprintf("../templates/web/gin/%s", apiDir)
-	err = gen.GenFiles(templateDir, apiDir, ginModel)
+	err = gen.GenFiles(templateDir, apiDir, ginModel, true)
 	if err != nil {
 		fmt.Println("Error generating web files:", err)
 	}

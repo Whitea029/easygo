@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"{{ .ProjectName }}/conf"
+	"{{ .GoModule }}/conf"
 
 	"github.com/gin-gonic/gin"
 )

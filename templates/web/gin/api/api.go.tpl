@@ -1,10 +1,10 @@
 package api
 
 import (
-	"{{ .ProjectName }}/api/middlewares"
-	"{{ .ProjectName }}/api/routers"
-	"{{ .ProjectName }}/conf"
-	"{{ .ProjectName }}/pkg/logging"
+	"{{ .GoModule }}/api/middlewares"
+	"{{ .GoModule }}/api/routers"
+	"{{ .GoModule }}/conf"
+	"{{ .GoModule }}/pkg/logging"
 	"fmt"
 
 	"github.com/gin-gonic/gin"

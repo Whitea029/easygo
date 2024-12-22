@@ -13,7 +13,7 @@ type Config struct {
 var config = &Config{
 	ProjectName:  "example_demo",
 	GoModule:     "github.com/Whitea029/example_demo",
-	Database:     "mysql",
+	Database:     "postgres",
 	WebFramework: "gin",
 	Orm:          "gorm",
 	Cache:        "redis",

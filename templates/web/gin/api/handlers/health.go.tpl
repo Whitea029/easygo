@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"{{ .ProjectName }}/api/response"
-	"{{ .ProjectName }}/pkg/logging"
+	"{{ .GoModule }}/api/response"
+	"{{ .GoModule }}/pkg/logging"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

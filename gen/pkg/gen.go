@@ -20,9 +20,9 @@ func Config2PkgModel(config *config.Config) *pkgModel {
 }
 
 func GenPkgFiles(config *config.Config) (err error) {
-	confModel := Config2PkgModel(config)
+	pkgModel := Config2PkgModel(config)
 	templateDir := fmt.Sprintf("../templates/%s", pkgDir)
-	err = gen.GenFiles(templateDir, pkgDir, confModel)
+	err = gen.GenFiles(templateDir, pkgDir, pkgModel, true)
 	if err != nil {
 		fmt.Println("Error generating pkg files:", err)
 	}

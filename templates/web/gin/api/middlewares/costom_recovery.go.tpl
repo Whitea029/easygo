@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"{{ .ProjectName }}/api/response"
+	"{{ .GoModule }}/api/response"
 
 	"github.com/gin-gonic/gin"
 )
