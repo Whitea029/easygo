@@ -37,20 +37,22 @@ EasyGo is a command-line tool for quickly scaffolding Go web applications with s
 
 The things you need before installing the software.
 
-* Go
-* And you need this
-* Oh, and don't forget this
+- Go (v1.17+): Install Go from Go Downloads.
+- Git: Install Git from Git Downloads.
+- Make (Optional, for building from source): Install Make if needed (brew install make for macOS, sudo apt-get install make for Linux).
+- Access to GitHub (Optional, for installing via go install): Ensure your network allows access to GitHub.
+- A GitHub Account (Optional, for contributing or creating issues): Needed for reporting issues or contributing.
 
 ### Installation
 
 To get started, you can install EasyGo via go install:
 
 ```bash
-go install github.com/your-username/easygo@latest
+go install github.com/Whitea029/easygo@latest
 ```
 Alternatively, clone the repository and build it locally:
 ```bash
-git clone https://github.com/your-username/easygo.git
+git clone https://github.com/Whitea029/easygo.git
 cd easygo
 go build -o easygo
 ```
