@@ -38,10 +38,17 @@
 cobra
 #### 命令设计
 - `init`：初始化一个新的项目。
+  - `-n (--name)` 项目名称
+  - `-m (--module)` 项目的Go mudule
+  - `-o (--orm)` orm框架 gorm ent xorm等
+  - `-w (--web)` web框架 Gin Echo等
+  - `-db (--database)` 数据库 MySql PosegreSql等
 - `generate`：根据用户的配置生成代码模块。
-- `add`：向现有项目添加新的功能模块（如添加身份验证模块、日志模块等）。
+- `add`：向现有项目添加新的功能模块（如添加身份验证模块等）。
 - `list`：列出当前支持的模块和框架。
 - `version`：显示脚手架工具的版本。
+#### 使用示例
+`easygo init --module` 
 
 
 ~~日志的完善~~ 
