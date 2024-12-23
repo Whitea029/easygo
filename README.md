@@ -65,6 +65,10 @@ Run the init command to create a new project:
 ```bash
 easygo init --name <project-name> --module <go-module> 
 ```
+Start the Go project using the go run command:
+```bash
+go run ./cmd/main.go
+```
 
 ## Contributing
 
