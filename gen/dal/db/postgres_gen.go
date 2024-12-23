@@ -16,8 +16,8 @@ type PostgresModel struct {
 func Config2PostgresModel(config *config.Config) *PostgresModel {
 	return &PostgresModel{
 		GoModule:    config.GoModule,
-		TemplateDir: "../templates/dal/db/postgres",
-		DbDir:       "dal/db",
+		TemplateDir: "templates/dal/db/postgres",
+		DbDir:       fmt.Sprintf("%s/dal/db/", config.ProjectName),
 	}
 }
 

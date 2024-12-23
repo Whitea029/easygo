@@ -3,19 +3,21 @@ package extra
 import (
 	"fmt"
 	"os"
+
+	"github.com/Whitea029/easygo/config"
 )
 
 type extraModel struct {
 	folders []string
 }
 
-func NewExtraFiles() *extraModel {
+func NewExtraFiles(config *config.Config) *extraModel {
 	return &extraModel{
 		folders: []string{
-			"logs",
-			"services",
-			"test/integration",
-			"test/unit",
+			fmt.Sprintf("%s/logs", config.ProjectName),
+			fmt.Sprintf("%s/services", config.ProjectName),
+			fmt.Sprintf("%s/test/integration", config.ProjectName),
+			fmt.Sprintf("%s/test/unit", config.ProjectName),
 		},
 	}
 }

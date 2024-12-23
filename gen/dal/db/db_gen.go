@@ -12,6 +12,6 @@ func GetDBModel(config *config.Config) DbModel {
 	} else if config.Database == "mysql" {
 		return Config2MysqlModel(config)
 	} else {
-		panic("cache not supported")
+		panic("db not supported")
 	}
 }

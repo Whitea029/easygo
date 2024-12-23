@@ -7,8 +7,6 @@ import (
 	"github.com/Whitea029/easygo/gen"
 )
 
-var cacheDir = "dal/cache"
-
 type redisModel struct {
 	GoModule    string
 	TemplateDir string
@@ -18,8 +16,8 @@ type redisModel struct {
 func Config2RedisModel(config *config.Config) *redisModel {
 	return &redisModel{
 		GoModule:    config.GoModule,
-		TemplateDir: "../templates/dal/cache/redis",
-		CacheDir:    cacheDir,
+		TemplateDir: "templates/dal/cache/redis",
+		CacheDir:    fmt.Sprintf("%s/dal/cache/", config.ProjectName),
 	}
 }
 

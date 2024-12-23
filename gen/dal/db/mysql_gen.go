@@ -16,8 +16,8 @@ type MysqlModel struct {
 func Config2MysqlModel(config *config.Config) *MysqlModel {
 	return &MysqlModel{
 		GoModule:    config.GoModule,
-		TemplateDir: "../templates/dal/db/mysql",
-		DbDir:       "dal/db",
+		TemplateDir: "templates/dal/db/mysql",
+		DbDir:       fmt.Sprintf("%s/dal/db/", config.ProjectName),
 	}
 }
 
