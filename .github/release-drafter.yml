@@ -1,6 +1,7 @@
-name: 'Release $NEXT_PATCH_VERSION'
-tag_template: 'v$NEXT_PATCH_VERSION'
+name-template: 'Release $NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
 
-template:
-  - '## Changes'
-  - '$all'
+template: |
+  ## Changes
+
+  $CHANGES
