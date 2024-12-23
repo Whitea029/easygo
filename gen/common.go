@@ -58,14 +58,14 @@ func GenFiles(templateDir, modelDir string, model any, deep bool) (err error) {
 			continue
 		}
 
-		if !entry.IsDir() && filepath.Ext(path) == ".tpl" {
+		if !entry.IsDir() && filepath.Ext(path) == ".tmpl" {
 			relPath, err := filepath.Rel(templateDir, path)
 			if err != nil {
 				fmt.Println("Error getting relative path:", err)
 				return err
 			}
 
-			outputPath := filepath.Join(modelDir, relPath[:len(relPath)-len(".tpl")])
+			outputPath := filepath.Join(modelDir, relPath[:len(relPath)-len(".tmpl")])
 
 			err = GenFile(path, outputPath, model)
 			if err != nil {
