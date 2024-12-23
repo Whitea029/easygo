@@ -44,7 +44,7 @@ func GenFile(templatePath, outputPath string, model any) (err error) {
 	return
 }
 
-func GenFiles(templateDir, outputDir string, model any, deep bool) (err error) {
+func GenFiles(templateDir, modelDir string, model any, deep bool) (err error) {
 	entries, err := Templates.ReadDir(templateDir)
 	if err != nil {
 		fmt.Println("Error reading template directory:", err)
@@ -65,7 +65,7 @@ func GenFiles(templateDir, outputDir string, model any, deep bool) (err error) {
 				return err
 			}
 
-			outputPath := filepath.Join(outputDir, relPath[:len(relPath)-len(".tpl")])
+			outputPath := filepath.Join(modelDir, relPath[:len(relPath)-len(".tpl")])
 
 			err = GenFile(path, outputPath, model)
 			if err != nil {
@@ -76,7 +76,7 @@ func GenFiles(templateDir, outputDir string, model any, deep bool) (err error) {
 
 		if entry.IsDir() && deep {
 			subDir := filepath.Join(templateDir, entry.Name())
-			outputSubDir := filepath.Join(outputDir, entry.Name())
+			outputSubDir := filepath.Join(modelDir, entry.Name())
 			err := GenFiles(subDir, outputSubDir, model, deep)
 			if err != nil {
 				return err

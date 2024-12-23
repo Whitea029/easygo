@@ -7,26 +7,27 @@ import (
 	"github.com/Whitea029/easygo/gen"
 	"github.com/Whitea029/easygo/gen/dal/cache"
 	"github.com/Whitea029/easygo/gen/dal/db"
+	"github.com/Whitea029/easygo/gen/model"
 )
 
-var templateDir = "templates/dal"
-
 type dalModel struct {
-	GoModule string
+	model.BaseModel
 }
 
 func Config2DalModel(config *config.Config) *dalModel {
 	return &dalModel{
-		GoModule: config.GoModule,
+		BaseModel: model.BaseModel{
+			GoModule:    config.GoModule,
+			TemplateDir: "templates/dal",
+			ModelDir:    fmt.Sprintf("%s/dal", config.ProjectName),
+		},
 	}
 }
 
-func GenDalFiles(config *config.Config) (err error) {
+func (d *dalModel) GenDalFiles(config *config.Config) (err error) {
 	db.GetDBModel(config).GenDbFiles(config)
 	cache.GetCacheModel(config).GenCacheFiles(config)
-	dalModel := Config2DalModel(config)
-	dalDir := fmt.Sprintf("%s/dal/", config.ProjectName)
-	err = gen.GenFiles(templateDir, dalDir, dalModel, false)
+	err = gen.GenFiles(d.TemplateDir, d.ModelDir, d, false)
 	if err != nil {
 		fmt.Println("Error generating dal files:", err)
 	}

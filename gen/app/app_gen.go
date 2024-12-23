@@ -14,11 +14,13 @@ import (
 func GenAppFiles(config *config.Config) (err error) {
 	gen.GenProjectFolder(config.ProjectName)
 	gen.GoModInit(config)
-	conf.GenConfFiles(config)
-	pkg.GenPkgFiles(config)
-	api.GenApiFiles(config)
-	dal.GenDalFiles(config)
-	cmd.GenMainFiles(config)
+
+	conf.Config2ConfModel(config).GenConfFiles()
+	pkg.Config2PkgModel(config).GenPkgFiles()
+	api.GetApiModel(config).GenApiFiles()
+	dal.Config2DalModel(config).GenDalFiles(config)
+	cmd.Config2MainModel(config).GenMainFiles()
+
 	gen.GoModTidy(config)
 	extra.NewExtraFiles(config).GenExtraFolders()
 	return

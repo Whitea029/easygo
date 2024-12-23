@@ -7,12 +7,12 @@ import (
 	"github.com/Whitea029/easygo/gen"
 )
 
-var templateDir = "templates/conf"
-
 type confModel struct {
 	UseMysql    bool
 	UsePostgres bool
 	UseRedis    bool
+	TemplateDir string
+	ConfDir     string
 }
 
 func Config2ConfModel(config *config.Config) *confModel {
@@ -26,13 +26,13 @@ func Config2ConfModel(config *config.Config) *confModel {
 	if config.Cache == "redis" {
 		confModel.UseRedis = true
 	}
+	confModel.TemplateDir = "templates/conf"
+	confModel.ConfDir = fmt.Sprintf("%s/conf", config.ProjectName)
 	return confModel
 }
 
-func GenConfFiles(config *config.Config) (err error) {
-	confModel := Config2ConfModel(config)
-	confDir := fmt.Sprintf("%s/conf", config.ProjectName)
-	err = gen.GenFiles(templateDir, confDir, confModel, true)
+func (c *confModel) GenConfFiles() (err error) {
+	err = gen.GenFiles(c.TemplateDir, c.ConfDir, c, true)
 	if err != nil {
 		return fmt.Errorf("Error generating conf files: %v", err)
 	}

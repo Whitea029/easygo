@@ -5,24 +5,25 @@ import (
 
 	"github.com/Whitea029/easygo/config"
 	"github.com/Whitea029/easygo/gen"
+	"github.com/Whitea029/easygo/gen/model"
 )
 
 type MysqlModel struct {
-	GoModule    string
-	TemplateDir string
-	DbDir       string
+	model.BaseModel
 }
 
 func Config2MysqlModel(config *config.Config) *MysqlModel {
 	return &MysqlModel{
-		GoModule:    config.GoModule,
-		TemplateDir: "templates/dal/db/mysql",
-		DbDir:       fmt.Sprintf("%s/dal/db/", config.ProjectName),
+		BaseModel: model.BaseModel{
+			GoModule:    config.GoModule,
+			TemplateDir: "templates/dal/db/mysql",
+			ModelDir:    fmt.Sprintf("%s/dal/db/", config.ProjectName),
+		},
 	}
 }
 
 func (m *MysqlModel) GenDbFiles(config *config.Config) (err error) {
-	err = gen.GenFiles(m.TemplateDir, m.DbDir, m, true)
+	err = gen.GenFiles(m.TemplateDir, m.ModelDir, m, true)
 	if err != nil {
 		fmt.Println("Error generating db files:", err)
 	}

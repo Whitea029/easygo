@@ -5,24 +5,25 @@ import (
 
 	"github.com/Whitea029/easygo/config"
 	"github.com/Whitea029/easygo/gen"
+	"github.com/Whitea029/easygo/gen/model"
 )
 
-var templateDir = "templates/web/gin/api"
-
 type ginModel struct {
-	GoModule string
+	model.BaseModel
 }
 
 func Config2GinModel(config *config.Config) *ginModel {
 	return &ginModel{
-		GoModule: config.GoModule,
+		BaseModel: model.BaseModel{
+			GoModule:    config.GoModule,
+			TemplateDir: "templates/web/gin/api",
+			ModelDir:    fmt.Sprintf("%s/api", config.ProjectName),
+		},
 	}
 }
 
-func GenApiFiles(config *config.Config) (err error) {
-	ginModel := Config2GinModel(config)
-	apiDir := fmt.Sprintf("%s/api", config.ProjectName)
-	err = gen.GenFiles(templateDir, apiDir, ginModel, true)
+func (g *ginModel) GenApiFiles() (err error) {
+	err = gen.GenFiles(g.TemplateDir, g.ModelDir, g, true)
 	if err != nil {
 		fmt.Println("Error generating web files:", err)
 	}

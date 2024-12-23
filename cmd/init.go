@@ -17,7 +17,7 @@ var initCmd = &cobra.Command{
 		module, _ := cmd.Flags().GetString("module")
 		orm, _ := cmd.Flags().GetString("orm")
 		web, _ := cmd.Flags().GetString("web")
-		db, _ := cmd.Flags().GetString("database")
+		db, _ := cmd.Flags().GetString("db")
 		cache, _ := cmd.Flags().GetString("cache")
 		logging, _ := cmd.Flags().GetString("logging")
 
@@ -46,7 +46,7 @@ func init() {
 	initCmd.Flags().StringP("module", "m", "", "module")
 	initCmd.Flags().StringP("orm", "o", "gorm", "orm framework (gorm, xorm)")
 	initCmd.Flags().StringP("web", "w", "gin", "web framework (gin, echo)")
-	initCmd.Flags().StringP("database", "d", "mysql", "database (mysql, postgresql, sqlite3)")
+	initCmd.Flags().StringP("db", "d", "mysql", "database (mysql, postgresql, sqlite3)")
 	initCmd.Flags().StringP("cache", "c", "redis", "cache (redis, memcache)")
 	initCmd.Flags().StringP("logging", "l", "zap", "logging (zap, zero)")
 

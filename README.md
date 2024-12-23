@@ -63,7 +63,7 @@ go build -o easygo
 Run the init command to create a new project:
 
 ```bash
-easygo init --name <project-name> --module <go-module> --orm <gorm|ent|xorm> --web <gin|echo> --db <mysql|postgresql>
+easygo init --name <project-name> --module <go-module> --orm <gorm|ent|xorm> --web <gin|echo> --db <mysql|postgresql> --cache <redis>
 ```
 
 ## Contributing

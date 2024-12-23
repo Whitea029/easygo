@@ -5,24 +5,25 @@ import (
 
 	"github.com/Whitea029/easygo/config"
 	"github.com/Whitea029/easygo/gen"
+	"github.com/Whitea029/easygo/gen/model"
 )
 
 type PostgresModel struct {
-	GoModule    string
-	TemplateDir string
-	DbDir       string
+	model.BaseModel
 }
 
 func Config2PostgresModel(config *config.Config) *PostgresModel {
 	return &PostgresModel{
-		GoModule:    config.GoModule,
-		TemplateDir: "templates/dal/db/postgres",
-		DbDir:       fmt.Sprintf("%s/dal/db/", config.ProjectName),
+		BaseModel: model.BaseModel{
+			GoModule:    config.GoModule,
+			TemplateDir: "templates/dal/db/postgres",
+			ModelDir:    fmt.Sprintf("%s/dal/db/", config.ProjectName),
+		},
 	}
 }
 
 func (p *PostgresModel) GenDbFiles(config *config.Config) (err error) {
-	err = gen.GenFiles(p.TemplateDir, p.DbDir, p, true)
+	err = gen.GenFiles(p.TemplateDir, p.ModelDir, p, true)
 	if err != nil {
 		fmt.Println("Error generating db files:", err)
 	}

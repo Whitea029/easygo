@@ -5,24 +5,25 @@ import (
 
 	"github.com/Whitea029/easygo/config"
 	"github.com/Whitea029/easygo/gen"
+	"github.com/Whitea029/easygo/gen/model"
 )
 
-var templateDir = "templates/cmd"
-
-type MainModel struct {
-	GoModule string
+type mainModel struct {
+	model.BaseModel
 }
 
-func Config2MainModel(config *config.Config) *MainModel {
-	return &MainModel{
-		GoModule: config.GoModule,
+func Config2MainModel(config *config.Config) *mainModel {
+	return &mainModel{
+		BaseModel: model.BaseModel{
+			GoModule:    config.GoModule,
+			TemplateDir: "templates/cmd",
+			ModelDir:    fmt.Sprintf("%s/cmd", config.ProjectName),
+		},
 	}
 }
 
-func GenMainFiles(config *config.Config) (err error) {
-	mainModel := Config2MainModel(config)
-	mainDir := fmt.Sprintf("%s/cmd", config.ProjectName)
-	err = gen.GenFiles(templateDir, mainDir, mainModel, true)
+func (m *mainModel) GenMainFiles() (err error) {
+	err = gen.GenFiles(m.TemplateDir, m.ModelDir, m, true)
 	if err != nil {
 		return
 	}
