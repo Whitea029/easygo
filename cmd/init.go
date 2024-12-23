@@ -28,6 +28,7 @@ var initCmd = &cobra.Command{
 		fmt.Printf("Database: %s\n", db)
 		fmt.Printf("Cache: %s\n", cache)
 		fmt.Printf("Logging: %s\n", logging)
+		fmt.Println("Code generating...")
 		config := &config.Config{
 			ProjectName:  name,
 			GoModule:     module,
@@ -38,6 +39,7 @@ var initCmd = &cobra.Command{
 			Logging:      logging,
 		}
 		app.GenAppFiles(config)
+		fmt.Println("Code generated successfully!")
 	},
 }
 
