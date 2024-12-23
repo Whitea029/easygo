@@ -51,10 +51,10 @@ EasyGo 是一个命令行工具，支持多框架、ORM 工具和数据库，帮
 
 ```bash
 # Go 1.15 及更早版本
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/cloudwego/cwgo@latest
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/Whitea029/easygo@latest
 
 # Go 1.16 及更高版本
-GOPROXY=https://goproxy.cn/,direct go install github.com/cloudwego/cwgo@latest
+GOPROXY=https://goproxy.cn/,direct go install github.com/Whitea029/easygo@latest
 ```
 或者，克隆仓库并本地构建：
 ```bash
