@@ -1,0 +1,41 @@
+package api
+
+import (
+	"{{ .GoModule }}/api/middlewares"
+	"{{ .GoModule }}/api/routers"
+	"{{ .GoModule }}/conf"
+	"{{ .GoModule }}/pkg/logging"
+	"fmt"
+
+	"github.com/labstack/echo/v4"
+)
+
+var logger = logging.GetLogger()
+var ServerPort = conf.GetConfig().Server.Port
+
+func InitServer() {
+	e := echo.New()
+
+	RegisterMiddleware(e)
+	RegisterRoutes(e)
+
+	logger.Info(logging.General, logging.Startup, "Started", nil)
+	err := e.Start(fmt.Sprintf("localhost:%s", ServerPort))
+	if err != nil {
+		logger.Fatal(logging.General, logging.Startup, err.Error(), nil)
+	}
+}
+
+func RegisterMiddleware(e *echo.Echo) {
+	e.Use(middlewares.RecoveryMiddleware)
+	e.Use(middlewares.Cors)
+}
+
+func RegisterRoutes(e *echo.Echo) {
+	api := e.Group("/api")
+	v1 := api.Group("/v1")
+	{
+		health := v1.Group("/health")
+		routers.Health(health)
+	}
+}

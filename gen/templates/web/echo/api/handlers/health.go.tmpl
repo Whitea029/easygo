@@ -1,0 +1,23 @@
+package handlers
+
+import (
+	"{{ .GoModule }}/api/response"
+	"{{ .GoModule }}/pkg/logging"
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+)
+
+var logger = logging.GetLogger()
+
+type HealthHandler struct {
+}
+
+func NewHealthHandler() *HealthHandler {
+	return &HealthHandler{}
+}
+
+func (h *HealthHandler) HandlerGet(c echo.Context) error {
+	logger.Info(logging.General, logging.Api, "Health check", nil)
+	return c.JSON(http.StatusOK, response.GenResp(true, response.Success, "ok", nil))
+}

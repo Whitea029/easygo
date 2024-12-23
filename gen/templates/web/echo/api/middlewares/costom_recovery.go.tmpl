@@ -1,0 +1,22 @@
+package middlewares
+
+import (
+	"{{ .GoModule }}/api/response"
+	"fmt"
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+)
+
+func RecoveryMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		defer func() {
+			if r := recover(); r != nil {
+				err := fmt.Errorf("Recovered from panic: %v", r)
+				response := response.GenResp(false, response.InternalError, err, nil)
+				c.JSON(http.StatusInternalServerError, response)
+			}
+		}()
+		return next(c)
+	}
+}

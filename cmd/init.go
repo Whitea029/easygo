@@ -47,7 +47,7 @@ func init() {
 	initCmd.Flags().StringP("name", "n", "", "name")
 	initCmd.Flags().StringP("module", "m", "", "module")
 	initCmd.Flags().StringP("orm", "o", "gorm", "orm framework (gorm, xorm)")
-	initCmd.Flags().StringP("web", "w", "gin", "web framework (gin, echo)")
+	initCmd.Flags().StringP("web", "w", "echo", "web framework (gin, echo)")
 	initCmd.Flags().StringP("db", "d", "mysql", "database (mysql, postgresql, sqlite3)")
 	initCmd.Flags().StringP("cache", "c", "redis", "cache (redis, memcache)")
 	initCmd.Flags().StringP("logging", "l", "zap", "logging (zap, zero)")

@@ -1,0 +1,13 @@
+package routers
+
+import (
+	"{{ .GoModule }}/api/handlers"
+
+	"github.com/labstack/echo/v4"
+)
+
+func Health(e *echo.Group) {
+	handler := handlers.NewHealthHandler()
+
+	e.GET("/", handler.HandlerGet)
+}

@@ -10,9 +10,9 @@ func GetApiModel(config *config.Config) apiModel {
 	switch config.WebFramework {
 	case "gin":
 		return Config2GinModel(config)
-	// case "echo":
-	// 	return &echoModel{}
+	case "echo":
+		return Config2EchoModel(config)
 	default:
-		return Config2GinModel(config)
+		panic("web framework not supported")
 	}
 }
