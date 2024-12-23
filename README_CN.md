@@ -1,5 +1,6 @@
 # EasyGo
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
 中文 | [English](./README.md)
 
 一个用于快速搭建 Go Web 项目的命令行工具  
