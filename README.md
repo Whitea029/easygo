@@ -1,6 +1,7 @@
 
 # EasyGo
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+English | [中文](./README_CN.md)
 
 A CLI tool for scaffolding Go web projects  
     
@@ -20,7 +21,7 @@ A CLI tool for scaffolding Go web projects
 
 ## Roadmap
 
-- [ ] Web framework support: Echo, Hertz
+- [x] Web framework support: Echo, Hertz
 - [ ] ORM framework support: Xorm, Ent
 - [ ] i18n internationalization
 - [ ] API testing
@@ -28,6 +29,8 @@ A CLI tool for scaffolding Go web projects
 - [ ] CI/CD support: Generate CI/CD configuration files (GitHub Actions, GitLab CI, Jenkins)
 - [ ] API documentation: Swagger, Markdown, HTML support
 - [ ] Code quality checks
+
+**🤔However, I currently plan to give priority to reconstructing the static generation part of the template code.**
 
 ## Getting Started
 
@@ -48,7 +51,11 @@ The things you need before installing the software.
 To get started, you can install EasyGo via go install:
 
 ```bash
-go install github.com/Whitea029/easygo@latest
+# Go 1.15 and earlier version
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/Whitea029/easygo@latest
+
+# Go 1.16 and later version
+GOPROXY=https://goproxy.cn/,direct go install github.com/Whitea029/easygo@latest
 ```
 Alternatively, clone the repository and build it locally:
 ```bash
@@ -72,5 +79,12 @@ go run ./cmd/main.go
 
 ## Contributing
 
-All contributions are welcome!  
-[PR](https://github.com/Whitea029/easygo/pulls) | [Issues](https://github.com/Whitea029/easygo/issues)
+Contributions are welcome! Here's how you can help:
+
+1. **Report Issues**: Found a bug? Open an issue with details and steps to reproduce.
+2. **Suggest Features**: Have an idea? Create an issue labeled `enhancement`.
+3. **Submit Changes**:
+   - Fork the repo and create a feature branch: `git checkout -b feature/your-feature-name`
+   - Commit your changes and open a pull request.
+
+Thank you for your support!
