@@ -73,4 +73,4 @@ go run ./cmd/main.go
 ## Contributing
 
 All contributions are welcome!  
-Please take a moment to review guidelines [PR](https://github.com/Whitea029/easygo/pulls) | [Issues](https://github.com/Whitea029/easygo/issues)
+[PR](https://github.com/Whitea029/easygo/pulls) | [Issues](https://github.com/Whitea029/easygo/issues)
