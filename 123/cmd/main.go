@@ -1,10 +1,10 @@
 package main
 
 import (
-	"{{ .GoModule }}/api"
-	"{{ .GoModule }}/conf"
-	// "{{ .GoModule }}/dal"
-	"{{ .GoModule }}/pkg/logging"
+	"1232313/api"
+	"1232313/conf"
+	// "1232313/dal"
+	"1232313/pkg/logging"
 )
 
 var log = logging.GetLogger()

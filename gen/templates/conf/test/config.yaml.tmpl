@@ -1,0 +1,51 @@
+server:
+  name: "{{ .ProjectName }}"
+  port: "8080"
+
+{{ if .UseMysql }}
+mysql:
+  host: "localhost"
+  port: 3306
+  user: "root"
+  password: "root"
+  dbName: "eg1"
+  maxIdleConns: 10
+  maxOpenConns: 100
+  connMaxLifetime: 3600s 
+{{ end }}
+
+{{ if .UsePostgres }}
+postgres:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  dbName: "eg1"
+  searchPath: "public"
+  sslMode: "disable"  
+  maxIdleConns: 10
+  maxOpenConns: 100
+  connMaxLifetime: 3600s  
+{{ end }}
+
+{{ if .UseRedis }}
+redis:
+  host: "localhost"
+  port: 6379
+  db: 0
+  dialTimeout: 5s
+  readTimeout: 3s
+  writeTimeout: 3s
+  idleCheckFrequency: 30s
+  poolSize: 10
+  poolTimeout: 5s
+{{ end }}
+
+logger:
+  filePath: logs/
+  encoding: "json"
+  level: "info"
+  logger: "zerolog"
+
+cors:
+  allowOrigins: "*"

@@ -8,6 +8,7 @@ import (
 )
 
 type confModel struct {
+	ProjectName string
 	UseMysql    bool
 	UsePostgres bool
 	UseRedis    bool
@@ -26,6 +27,7 @@ func Config2ConfModel(config *config.Config) *confModel {
 	if config.Cache == "redis" {
 		confModel.UseRedis = true
 	}
+	confModel.ProjectName = config.ProjectName
 	confModel.TemplateDir = "templates/conf"
 	confModel.ConfDir = fmt.Sprintf("%s/conf", config.ProjectName)
 	return confModel
