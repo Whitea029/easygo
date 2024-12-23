@@ -8,20 +8,12 @@ import (
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "",
+	Short: "Print the version number of easygo-cli",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("easygo-cli v1.0.0")
+		fmt.Println("easygo-cli v0.1.8")
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(versionCmd)
-	rootCmd.PersistentFlags().BoolP("version", "v", false, "")
-	cobra.OnInitialize(func() {
-		versionFlag, _ := rootCmd.PersistentFlags().GetBool("version")
-		if versionFlag {
-			fmt.Println("easygo-cli v1.0.0")
-			return
-		}
-	})
 }

@@ -1,4 +1,0 @@
-package routers
-
-func Ping() {
-}

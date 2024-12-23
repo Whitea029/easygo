@@ -7,12 +7,14 @@ import (
 
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "TODO",
+	Short: "List supported frameworks and libraries",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Supported:")
-		fmt.Println("- Web framework: Gin, Echo")
-		fmt.Println("- ORM framework: Gorm, Xorm")
+		fmt.Println("- Web framework: Gin")
+		fmt.Println("- ORM framework: Gorm")
 		fmt.Println("- Database: MySQL, PostgreSQL")
+		fmt.Println("- Cache: Redis")
+		fmt.Println("- Log: Zap, ZeroLog")
 	},
 }
 
