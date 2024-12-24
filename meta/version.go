@@ -2,5 +2,5 @@ package meta
 
 var (
 	Name    = "easygo"
-	Version = "v0.1.9"
+	Version = "v0.1.10"
 )
