@@ -21,7 +21,7 @@
 
 ## 路线图
 
-- [x] Web 框架支持：Echo、Hertz
+- [x] Web 框架支持：Echo、Gin
 - [ ] ORM 框架支持：Xorm、Ent
 - [ ] i18n 国际化支持
 - [ ] API 测试功能
@@ -82,4 +82,4 @@ go run ./cmd/main.go
 4. **`Fork` 仓库并创建分支**：`git checkout -b feature/your-feature-name`
 提交更改并创建 `Pull Request`。
 
-感谢你的支持
+感谢你的支持！

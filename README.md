@@ -22,7 +22,7 @@ A CLI tool for scaffolding Go web projects
 
 ## Roadmap
 
-- [x] Web framework support: Echo, Hertz
+- [x] Web framework support: Echo, Gin
 - [ ] ORM framework support: Xorm, Ent
 - [ ] i18n internationalization
 - [ ] API testing
