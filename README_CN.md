@@ -40,9 +40,8 @@ EasyGo 是一个命令行工具，支持多框架、ORM 工具和数据库，帮
 
 使用前需要确保安装以下软件：
 
-- Go (v1.17+): 从 [Go Downloads](https://golang.org/dl/) 安装。
+- Go (v1.18+): 从 [Go Downloads](https://golang.org/dl/) 安装。
 - Git: 从 [Git Downloads](https://git-scm.com/) 安装。
-- Make (可选，用于从源码构建): 根据系统需求安装 Make（如 macOS 使用 `brew install make`，Linux 使用 `sudo apt-get install make`）。
 - GitHub 访问权限 (可选，用于通过 `go install` 安装): 确保网络允许访问 GitHub。
 - GitHub 账号 (可选，用于贡献或创建问题): 便于报告问题或贡献代码。
 
@@ -51,10 +50,7 @@ EasyGo 是一个命令行工具，支持多框架、ORM 工具和数据库，帮
 通过 `go install` 安装 EasyGo：
 
 ```bash
-# Go 1.15 及更早版本
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get github.com/Whitea029/easygo@latest
-
-# Go 1.16 及更高版本
+# Go 1.18 及更高版本
 GOPROXY=https://goproxy.cn/,direct go install github.com/Whitea029/easygo@latest
 ```
 或者，克隆仓库并本地构建：
